@@ -14,6 +14,9 @@ This guide provides instructions and tweaks for addressubg issues setting up an 
 ### Overview
 When the `assign private dns record` setting in OCI is set to `false`, the hostname on openshift nodes defaults to the MAC address of the instance. While it doesn't affect the install, it makes it difficult for administrators to quikcly identify nodes by name.
 
+### For **existing** clusters
+Apply the **machineconfig-ccm.yml** to the cluster to update the machineconfig and fix the issue for any newly added nodes.
+
 ### For New Cluster Installs
 To address this issue in new cluster installs, replace the `machineconfig-ccm.yml` file with the version included in this repository when creating the installation image using the OpenShift installer.
 
