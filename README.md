@@ -1,13 +1,15 @@
 #  OpenShift Disconnected Installation on Oracle Cloud Tweaks
 
-##  Hostname on nodes defaults to mac address when assign private dns record is set to false.
+##  1. Hostname on nodes defaults to the mac address when *assign private dns record* is set to false.
 
-### For new cluster installs
+### For **new** cluster installs
 Replace **machineconfig-ccm.yml** with one in this repo when creating the installation image in the openshift-installer.
 
 I run into an issue where sometimes the worker nodes will get joined as masters as there is not way to specify the node type other than in the agent-config.yaml.  Unfortunately, oracle cloud doesn't seem to allow you to specify a mac address during installation and the ccm agent does not pick up the role from the instance tags.  Because of this, the best way I've found to ensure the nodes I want to be master deploy as master is to set the replica count of the compute nodes to 0 in the install-config.yaml file.  
 
 The cluster will deploy the master nodes with the worker node role as well and you'll need to remove that once you've deployed the worker nodes.
+
+#### Remove *worker* role from master nodes and redeploy pods
 
 Once the cluster deploys, use the **Add a new worker node to an existing cluster** workflow shown below to add as many worker nodes as you need.  Once the worker nodes are deployed, you will need to remove the *worker* role from the master nodes by running the oc command below:
 
@@ -32,11 +34,11 @@ oc rollout -n openshift-monitoring restart deployment/thanos-querier
 
 Depending on what you deployed, some of the above commands may fail due to the deployments not existing in your cluster.  That is ok.
 
-### For existing clusters
+### For **existing** clusters
 
 Apply the **machineconfig-ccm.yml** to the cluster to update the machineconfig and fix the issue for any newly added nodes.
 
-## Add new worker nodes to an existing cluster
+## 2. Add new worker nodes to an existing cluster
 
 ### For instance with connection to internet and to the cluster
 If you have an instance with access to both the cluster and to the internet, run only the **00-extract-ignition-create-worker.sh script.**
