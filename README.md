@@ -9,7 +9,7 @@ I run into an issue where sometimes the worker nodes will get joined as masters 
 
 The cluster will deploy the master nodes with the worker node role as well and you'll need to remove that once you've deployed the worker nodes.
 
-Once the cluster deploys, use the Add a new worker node to an existing cluster shown below to add as many worker nodes as you need.  Once the worker nodes are deployed, you will need to remove the *worker* role from the master nodes by running the oc command below:
+Once the cluster deploys, use the **Add a new worker node to an existing cluster** workflow shown below to add as many worker nodes as you need.  Once the worker nodes are deployed, you will need to remove the *worker* role from the master nodes by running the oc command below:
 
 ```
 oc patch scheduler cluster --type merge -p '{"spec":{"mastersSchedulable":false}}'
@@ -36,7 +36,7 @@ Depending on what you deployed, some of the above commands may fail due to the d
 
 Apply the **machineconfig-ccm.yml** to the cluster to update the machineconfig and fix the issue for any newly added nodes.
 
-## Add new worker nodes to existing cluster
+## Add new worker nodes to an existing cluster
 
 ### For instance with connection to internet and to the cluster
 If you have an instance with access to both the cluster and to the internet, run only the **00-extract-ignition-create-worker.sh script.**
