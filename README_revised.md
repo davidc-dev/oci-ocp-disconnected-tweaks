@@ -5,8 +5,8 @@
 This guide provides instructions and tweaks for addressubg issues setting up an OpenShift Disconnected Installation on Oracle Cloud Infrastructure (OCI). It addresses common issues and offers solutions to ensure a smooth installation and configuration process. This document is intended for administrators familiar with OpenShift and Oracle Cloud.
 
 ## Table of Contents
-1. [Node Hostname Defaults to MAC Address](#1-node-hostname-defaults-to-mac-address)
-2. [Adding Worker Nodes](#3-adding-worker-nodes)
+1. [Node Hostname Defaults to MAC Address](#1-node-hostname-defaults-to-the-mac-address)
+2. [Adding Worker Nodes](#2-adding-worker-nodes)
 
 
 ## 1. Node Hostname Defaults to the MAC Address
