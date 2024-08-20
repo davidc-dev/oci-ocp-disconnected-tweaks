@@ -67,7 +67,7 @@ To scale your OpenShift cluster, you may need to add additional worker nodes. Th
 
       Run the script with the IP address or resolvable hostname of the webserver you used to serve up the raw disk file during the installation. 
 
-      ```
+      ```bash
       WEBSERVER=<server IP or hostname>
       ./00-extract-ignition-create-worker.sh $WEBSERVER
       ```
@@ -84,7 +84,7 @@ To scale your OpenShift cluster, you may need to add additional worker nodes. Th
 
       On an instance that has internet access, run the **02-create-worker-image.sh** script.  It has 2 arguments.  The first is the IP address or hostname of the webserver and the second is the RAW_DISK_PATH output from the first script.
 
-      ```
+      ```bash
       WEBSERVER=<server IP or hostname>
       RAW_DISK_PATH=<url output from first script>
       ./02-create-worker-image.sh $WEBSERVER $RAW_DISK_PATH
@@ -136,8 +136,8 @@ To scale your OpenShift cluster, you may need to add additional worker nodes. Th
 3. Create new worker nodes
   - Either manually create the new worker nodes using the new custom image, or add them using the terraform examples.  Update details, variables as needed for your environment.
 
-    hcl
-    ```
+   
+    ```hcl
     resource "oci_core_instance" "worker-01" {
       availability_domain = data.oci_identity_availability_domain.availability_domain.name
       compartment_id      = var.compartment_ocid
