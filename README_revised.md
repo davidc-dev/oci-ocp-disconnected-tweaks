@@ -6,7 +6,8 @@ This guide provides instructions and tweaks for addressubg issues setting up an 
 
 ## Table of Contents
 1. [Node Hostname Defaults to MAC Address](#1-node-hostname-defaults-to-the-mac-address)
-2. [Adding Worker Nodes](#2-adding-worker-nodes)
+2. [Node Role Issues](#2-node-role-issues)
+3. [Adding Worker Nodes](#3-adding-worker-nodes)
 
 
 ## 1. Node Hostname Defaults to the MAC Address
@@ -20,7 +21,9 @@ Apply the **machineconfig-ccm.yml** to the cluster to update the machineconfig a
 ### For New Cluster Installs
 To address this issue in new cluster installs, replace the `machineconfig-ccm.yml` file with the version included in this repository when creating the installation image using the OpenShift installer.
 
-### Node Role Issues
+## 2. Node Role Issues
+
+### Overview
 In some cases, worker nodes might be incorrectly joined as master nodes during new cluster installation because there is no direct way to specify the node type outside of the `agent-config.yaml` file. Unfortunately, Oracle Cloud does not allow specifying a MAC address during installation, and the CCM agent does not pick up the role from instance tags.
 
 To ensure that the nodes intended to be masters are deployed as masters, set the replica count of the compute nodes to `0` in the `install-config.yaml` file.  This will create a cluster with nodes that have the roles for master and worker.  We will fix this in the next section.
@@ -49,7 +52,7 @@ To ensure that the nodes intended to be masters are deployed as masters, set the
     ```
 
 
-## 2. Adding Worker Nodes
+## 3. Adding Worker Nodes
 
 ### Overview
 To scale your OpenShift cluster, you may need to add additional worker nodes. There are issues adding nodes in OCP versions < 4.16 which can be addressed by the workaround below.
