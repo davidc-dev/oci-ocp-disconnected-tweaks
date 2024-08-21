@@ -26,7 +26,7 @@ To address this issue in new cluster installs, replace the `machineconfig-ccm.ym
 ### Overview
 In some cases, worker nodes might be incorrectly joined as master nodes during new cluster installation because there is no direct way to specify the node type outside of the `agent-config.yaml` file. Unfortunately, Oracle Cloud does not allow specifying a MAC address during installation, and the CCM agent does not pick up the role from instance tags.
 
-To ensure that the nodes intended to be masters are deployed as masters, set the replica count of the compute nodes to `0` in the `install-config.yaml` file.  This will create a cluster with nodes that have the roles for master and worker.  We will fix this in the next section.
+To ensure that the nodes intended to be masters are deployed as masters, set the replica count of the compute nodes to `0` in the `install-config.yaml` file when installing a new cluster.  This will create a cluster with nodes that have the roles for master and worker.  The next section will describe how to remove the worker role from the masters after worker nodes are added to the cluster.
 
 ### Remove Worker Role from Master Nodes
 
