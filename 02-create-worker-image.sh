@@ -35,7 +35,7 @@ sudo mount ${LOOP_DEVICE}p3 /mnt/coreos-raw
 IGNITION=ignition.config.url=http://$WEBSERVER/worker.ign
 echo $IGNITION
 
-sudo sed -i "s|metal|metal $IGNITION|g" /mnt/coreos-raw/loader/entries/ostree-1-rhcos.conf
+sudo sed -i "s|metal|metal $IGNITION|g" /mnt/coreos-raw/loader/entries/ostree-1.conf
 cat /mnt/coreos-raw/loader/entries/ostree-1-rhcos.conf
 ## Unmount raw file
 
