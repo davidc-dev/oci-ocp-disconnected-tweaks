@@ -36,7 +36,7 @@ IGNITION=ignition.config.url=http://$WEBSERVER/worker.ign
 echo $IGNITION
 
 sudo sed -i "s|metal|metal $IGNITION|g" /mnt/coreos-raw/loader/entries/ostree-1.conf
-cat /mnt/coreos-raw/loader/entries/ostree-1-rhcos.conf
+cat /mnt/coreos-raw/loader/entries/ostree-1.conf
 ## Unmount raw file
 
 sudo umount /mnt/coreos-raw
